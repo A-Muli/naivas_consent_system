@@ -4,11 +4,12 @@ include 'db_connect.php';
 // Sanitize and collect form inputs
 $name = $_POST['name'];
 $date = $_POST['date_submitted'];
-$consent_photo = isset($_POST['consent_photograph']) ? 1 : 0;
-$consent_video = isset($_POST['consent_video']) ? 1 : 0;
-$publish_intranet = isset($_POST['publish_intranet']) ? 1 : 0;
-$publish_newsletter = isset($_POST['publish_newsletter']) ? 1 : 0;
-$publish_social = isset($_POST['publish_social']) ? 1 : 0;
+// Default to YES if not answered
+$consent_photo = isset($_POST['consent_photograph']) ? 1 : 1;
+$consent_video = isset($_POST['consent_video']) ? 1 : 1;
+$publish_intranet = isset($_POST['publish_intranet']) ? 1 : 1;
+$publish_newsletter = isset($_POST['publish_newsletter']) ? 1 : 1;
+$publish_social = isset($_POST['publish_social']) ? 1 : 1;
 $automated = $_POST['automated_decision'];
 $signature = $_POST['signature'];
 $witness_name = $_POST['witness_name'];
