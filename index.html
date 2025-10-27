@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naivas Consent Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      background: #ffffff;
+      border-bottom: 3px solid #f58220;
+      padding: 15px 25px;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .container {
+      width: 85%;
+      max-width: 900px;
+      background: white;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #f58220;
+      text-align: center;
+      font-size: 1.8em;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"], input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-top: 5px;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    button {
+      background-color: #006400;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #004d00;
+    }
+
+    /* Signature Pad Styling */
+    .signature-pad {
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      height: 200px;
+      cursor: crosshair;
+    }
+
+    .clear-btn {
+      background-color: #f58220;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .clear-btn:hover {
+      background-color: #d46a00;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="Images/logo.png" alt="Naivas Logo">
+</header>
+
+<div class="container">
+  <h1>CONSENT FORM TO PUBLISH CUSTOMER PHOTOS AND VIDEOS</h1>
+
+  <form id="consentForm" action="save_consent.php" method="POST">
+
+    <p>
+      In relation to the business operations carried out by <strong>Naivas Limited (Naivas)</strong> your personal data (e.g., your photos and images) may be processed for the purposes set out in this consent form.
+    </p>
+
+    <h3>1. Publication Channels</h3>
+    <label><input type="checkbox" name="publish_intranet"> Company intranet and website</label>
+    <label><input type="checkbox" name="publish_newsletter"> Company newsletter</label>
+    <label><input type="checkbox" name="publish_social"> Company social media</label>
+
+    <h3>2. Personal Data Used</h3>
+    <label><input type="checkbox" name="consent_photograph"> Photographs</label>
+    <label><input type="checkbox" name="consent_video"> Videos</label>
+
+    <h3>3. Automated Decision Making</h3>
+    <label><input type="radio" name="automated_decision" value="no" checked> We do not use personal data for automated decision making</label>
+    <label><input type="radio" name="automated_decision" value="yes"> We do use personal data for automated decision making</label>
+
+    <h3>7. Consent</h3>
+    <label><input type="radio" name="consent_publish" value="yes" required> I consent to publishing my photographs, videos and images.</label>
+    <label><input type="radio" name="consent_publish" value="no"> I do not consent to publishing my photographs, videos and images.</label>
+
+    <label>Name:</label>
+    <input type="text" name="name" required>
+
+    <label>Date:</label>
+    <input type="date" name="date_submitted" required>
+
+    <label>Signature:</label>
+    <canvas id="signature" class="signature-pad"></canvas>
+    <button type="button" class="clear-btn" onclick="clearSignature()">Clear Signature</button>
+    <input type="hidden" name="signature" id="signatureData">
+
+    <label>Witness Name:</label>
+    <input type="text" name="witness_name">
+
+    <label>Witness Signature:</label>
+    <canvas id="witnessSignature" class="signature-pad"></canvas>
+    <button type="button" class="clear-btn" onclick="clearWitnessSignature()">Clear Witness Signature</button>
+    <input type="hidden" name="witness_signature" id="witnessSignatureData">
+
+    <button type="submit">Submit Consent Form</button>
+  </form>
+</div>
+
+<script>
+  // Signature Pad for main signer
+  const canvas = document.getElementById('signature');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  canvas.addEventListener('mousedown', () => drawing = true);
+  canvas.addEventListener('mouseup', () => drawing = false);
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+  }
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Witness signature pad
+  const witnessCanvas = document.getElementById('witnessSignature');
+  const witnessCtx = witnessCanvas.getContext('2d');
+  let drawingWitness = false;
+
+  witnessCanvas.addEventListener('mousedown', () => drawingWitness = true);
+  witnessCanvas.addEventListener('mouseup', () => drawingWitness = false);
+  witnessCanvas.addEventListener('mousemove', drawWitness);
+
+  function drawWitness(e) {
+    if (!drawingWitness) return;
+    witnessCtx.lineWidth = 2;
+    witnessCtx.lineCap = 'round';
+    witnessCtx.strokeStyle = '#000';
+    witnessCtx.lineTo(e.offsetX, e.offsetY);
+    witnessCtx.stroke();
+  }
+
+  function clearWitnessSignature() {
+    witnessCtx.clearRect(0, 0, witnessCanvas.width, witnessCanvas.height);
+  }
+
+  // Convert signatures to Base64 before submitting
+  document.getElementById('consentForm').addEventListener('submit', function(e) {
+    const sigData = canvas.toDataURL('image/png');
+    document.getElementById('signatureData').value = sigData;
+
+    const witnessSigData = witnessCanvas.toDataURL('image/png');
+    document.getElementById('witnessSignatureData').value = witnessSigData;
+  });
+</script>
+
+</body>
+</html>
