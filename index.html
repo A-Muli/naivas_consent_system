@@ -13,7 +13,6 @@
       padding: 0;
       line-height: 1.6;
     }
-
     header {
       display: flex;
       justify-content: flex-end;
@@ -22,11 +21,9 @@
       border-bottom: 3px solid #f58220;
       padding: 15px 25px;
     }
-
     header img {
       height: 50px;
     }
-
     .container {
       width: 85%;
       max-width: 900px;
@@ -36,18 +33,12 @@
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
-
     h1 {
       color: #f58220;
       text-align: center;
       font-size: 1.8em;
     }
-
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-
+    label { display: block; margin-top: 10px; }
     input[type="text"], input[type="date"] {
       width: 100%;
       padding: 10px;
@@ -55,11 +46,9 @@
       border: 1px solid #ccc;
       margin-top: 5px;
     }
-
     input[type="checkbox"], input[type="radio"] {
       margin-right: 6px;
     }
-
     button {
       background-color: #006400;
       color: white;
@@ -71,12 +60,7 @@
       width: 100%;
       font-size: 16px;
     }
-
-    button:hover {
-      background-color: #004d00;
-    }
-
-    /* Signature Pad Styling */
+    button:hover { background-color: #004d00; }
     .signature-pad {
       border: 2px solid #ccc;
       border-radius: 6px;
@@ -84,7 +68,6 @@
       height: 200px;
       cursor: crosshair;
     }
-
     .clear-btn {
       background-color: #f58220;
       border: none;
@@ -94,10 +77,7 @@
       margin-top: 5px;
       cursor: pointer;
     }
-
-    .clear-btn:hover {
-      background-color: #d46a00;
-    }
+    .clear-btn:hover { background-color: #d46a00; }
   </style>
 </head>
 <body>
@@ -112,23 +92,62 @@
   <form id="consentForm" action="save_consent.php" method="POST">
 
     <p>
-      In relation to the business operations carried out by <strong>Naivas Limited (Naivas)</strong> your personal data (e.g., your photos and images) may be processed for the purposes set out in this consent form.
+      In relation to the business operations carried out by <strong>Naivas Limited (Naivas)</strong> your personal data (e.g., your photos and images) may be processed for the purposes set out in this consent form. Naivas is a supermarket chain in Kenya which has been in operation for over 30 years.
+    </p>
+
+    <p>
+      Where we rely on this Consent, we are required to inform you of the following:
     </p>
 
     <h3>1. Publication Channels</h3>
+    <p>Please tick as applicable</p>
     <label><input type="checkbox" name="publish_intranet"> Company intranet and website</label>
     <label><input type="checkbox" name="publish_newsletter"> Company newsletter</label>
     <label><input type="checkbox" name="publish_social"> Company social media</label>
 
-    <h3>2. Personal Data Used</h3>
-    <label><input type="checkbox" name="consent_photograph"> Photographs</label>
+    <h3>2. Type of Personal Data Collected and Used</h3>
+    <p>Images, photos and videos of the employees/customers</p>
+    <label><input type="checkbox" name="consent_photograph"> Photograph</label>
     <label><input type="checkbox" name="consent_video"> Videos</label>
 
     <h3>3. Automated Decision Making</h3>
     <label><input type="radio" name="automated_decision" value="no" checked> We do not use personal data for automated decision making</label>
     <label><input type="radio" name="automated_decision" value="yes"> We do use personal data for automated decision making</label>
 
+    <p>If yes, for the following reasons:</p>
+    <ul>
+      <li>Personalized Marketing and Promotions</li>
+      <li>Research and analytics</li>
+      <li>Customer experience enhancement</li>
+    </ul>
+
+    <h3>4. Data Subject Rights</h3>
+    <p>
+      You have the right to withdraw consent at any time.  
+      You have the absolute right to withdraw your consent in case we use your personal data for direct marketing.
+    </p>
+
+    <h3>5. Data Transfer</h3>
+    <p>
+      If we transfer your personal data outside Kenya, we will inform you of the possible risks of data transfers due to absence of an adequacy decision or what the appropriate safeguards are.
+    </p>
+
+    <h3>6. Contact Information</h3>
+    <p>
+      For inquiries or requests regarding the processing of personal data captured through filming and photography activities, you can contact Naivas's Data Protection Officer at:
+      <br><br>
+      <strong>Naivas Limited</strong><br>
+      P.O. BOX 61600 – 00200, Nairobi<br>
+      Email: dpo@naivas.co.ke<br>
+      Telephone: +254111184200
+    </p>
+
     <h3>7. Consent</h3>
+    <p>
+      I understand that my photographs or such videos containing my appearance may be thereafter published.  
+      Having read and understood the information contained in this form and in the Privacy Policy, I hereby give consent to take/access/use my:
+    </p>
+
     <label><input type="radio" name="consent_publish" value="yes" required> I consent to publishing my photographs, videos and images.</label>
     <label><input type="radio" name="consent_publish" value="no"> I do not consent to publishing my photographs, videos and images.</label>
 
@@ -156,57 +175,27 @@
 </div>
 
 <script>
-  // Signature Pad for main signer
   const canvas = document.getElementById('signature');
   const ctx = canvas.getContext('2d');
   let drawing = false;
-
   canvas.addEventListener('mousedown', () => drawing = true);
   canvas.addEventListener('mouseup', () => drawing = false);
   canvas.addEventListener('mousemove', draw);
+  function draw(e) { if (!drawing) return; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000'; ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke(); }
+  function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
-  function draw(e) {
-    if (!drawing) return;
-    ctx.lineWidth = 2;
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = '#000';
-    ctx.lineTo(e.offsetX, e.offsetY);
-    ctx.stroke();
-  }
-
-  function clearSignature() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-  }
-
-  // Witness signature pad
   const witnessCanvas = document.getElementById('witnessSignature');
   const witnessCtx = witnessCanvas.getContext('2d');
   let drawingWitness = false;
-
   witnessCanvas.addEventListener('mousedown', () => drawingWitness = true);
   witnessCanvas.addEventListener('mouseup', () => drawingWitness = false);
   witnessCanvas.addEventListener('mousemove', drawWitness);
+  function drawWitness(e) { if (!drawingWitness) return; witnessCtx.lineWidth = 2; witnessCtx.lineCap = 'round'; witnessCtx.strokeStyle = '#000'; witnessCtx.lineTo(e.offsetX, e.offsetY); witnessCtx.stroke(); }
+  function clearWitnessSignature() { witnessCtx.clearRect(0, 0, witnessCanvas.width, witnessCanvas.height); }
 
-  function drawWitness(e) {
-    if (!drawingWitness) return;
-    witnessCtx.lineWidth = 2;
-    witnessCtx.lineCap = 'round';
-    witnessCtx.strokeStyle = '#000';
-    witnessCtx.lineTo(e.offsetX, e.offsetY);
-    witnessCtx.stroke();
-  }
-
-  function clearWitnessSignature() {
-    witnessCtx.clearRect(0, 0, witnessCanvas.width, witnessCanvas.height);
-  }
-
-  // Convert signatures to Base64 before submitting
-  document.getElementById('consentForm').addEventListener('submit', function(e) {
-    const sigData = canvas.toDataURL('image/png');
-    document.getElementById('signatureData').value = sigData;
-
-    const witnessSigData = witnessCanvas.toDataURL('image/png');
-    document.getElementById('witnessSignatureData').value = witnessSigData;
+  document.getElementById('consentForm').addEventListener('submit', function() {
+    document.getElementById('signatureData').value = canvas.toDataURL('image/png');
+    document.getElementById('witnessSignatureData').value = witnessCanvas.toDataURL('image/png');
   });
 </script>
 
