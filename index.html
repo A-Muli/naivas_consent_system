@@ -1,202 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naivas Consent Form</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-    }
-    header {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      background: #ffffff;
-      border-bottom: 3px solid #f58220;
-      padding: 15px 25px;
-    }
-    header img {
-      height: 50px;
-    }
-    .container {
-      width: 85%;
-      max-width: 900px;
-      background: white;
-      margin: 30px auto;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    h1 {
-      color: #f58220;
-      text-align: center;
-      font-size: 1.8em;
-    }
-    label { display: block; margin-top: 10px; }
-    input[type="text"], input[type="date"] {
-      width: 100%;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      margin-top: 5px;
-    }
-    input[type="checkbox"], input[type="radio"] {
-      margin-right: 6px;
-    }
-    button {
-      background-color: #006400;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 20px;
-      width: 100%;
-      font-size: 16px;
-    }
-    button:hover { background-color: #004d00; }
-    .signature-pad {
-      border: 2px solid #ccc;
-      border-radius: 6px;
-      width: 100%;
-      height: 200px;
-      cursor: crosshair;
-    }
-    .clear-btn {
-      background-color: #f58220;
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 4px;
-      margin-top: 5px;
-      cursor: pointer;
-    }
-    .clear-btn:hover { background-color: #d46a00; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naivas Consent Form</title>
+    <style>
+        /* CSS styles remain the same for aesthetics */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            background: #ffffff;
+            border-bottom: 3px solid #f58220;
+            padding: 15px 25px;
+        }
+        header img {
+            height: 50px;
+        }
+        .container {
+            width: 85%;
+            max-width: 900px;
+            background: white;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #f58220;
+            text-align: center;
+            font-size: 1.8em;
+        }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+        }
+        input[type="checkbox"], input[type="radio"] {
+            margin-right: 6px;
+        }
+        button {
+            background-color: #006400;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-size: 16px;
+        }
+        button:hover { background-color: #004d00; }
+        .signature-pad {
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            width: 100%;
+            height: 200px;
+            cursor: crosshair;
+        }
+        .clear-btn {
+            background-color: #f58220;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 5px;
+            cursor: pointer;
+        }
+        .clear-btn:hover { background-color: #d46a00; }
+    </style>
 </head>
 <body>
 
 <header>
-  <img src="Images/logo.png" alt="Naivas Logo">
+    <img src="Images/logo.png" alt="Naivas Logo">
 </header>
 
 <div class="container">
-  <h1>CONSENT FORM TO PUBLISH CUSTOMER PHOTOS AND VIDEOS</h1>
+    <h1>CONSENT FORM TO PUBLISH CUSTOMER PHOTOS AND VIDEOS</h1>
 
-  <form id="consentForm" action="save_consent.php" method="POST">
+    <form id="consentForm" action="save_consent.php" method="POST" novalidate>
 
-    <p>
-      In relation to the business operations carried out by <strong>Naivas Limited (Naivas)</strong> your personal data (e.g., your photos and images) may be processed for the purposes set out in this consent form. Naivas is a supermarket chain in Kenya which has been in operation for over 30 years.
-    </p>
+        <p>
+            In relation to the business operations carried out by <strong>Naivas Limited (Naivas)</strong> your personal data (e.g., your photos and images) may be processed for the purposes set out in this consent form. Naivas is a supermarket chain in Kenya which has been in operation for over 30 years.
+        </p>
 
-    <p>
-      Where we rely on this Consent, we are required to inform you of the following:
-    </p>
+        <p>
+            Where we rely on this Consent, we are required to inform you of the following:
+        </p>
 
-    <h3>1. Publication Channels</h3>
-    <p>Please tick as applicable</p>
-    <label><input type="checkbox" name="publish_intranet"> Company intranet and website</label>
-    <label><input type="checkbox" name="publish_newsletter"> Company newsletter</label>
-    <label><input type="checkbox" name="publish_social"> Company social media</label>
+        <h3>1. Publication Channels</h3>
+        <p>Please tick as applicable</p>
+        <label><input type="checkbox" name="publish_intranet"> Company intranet and website</label>
+        <label><input type="checkbox" name="publish_newsletter"> Company newsletter</label>
+        <label><input type="checkbox" name="publish_social"> Company social media</label>
 
-    <h3>2. Type of Personal Data Collected and Used</h3>
-    <p>Images, photos and videos of the employees/customers</p>
-    <label><input type="checkbox" name="consent_photograph"> Photograph</label>
-    <label><input type="checkbox" name="consent_video"> Videos</label>
+        <h3>2. Type of Personal Data Collected and Used</h3>
+        <p>Images, photos and videos of the employees/customers</p>
+        <label><input type="checkbox" name="consent_photograph"> Photograph</label>
+        <label><input type="checkbox" name="consent_video"> Videos</label>
 
-    <h3>3. Automated Decision Making</h3>
-    <label><input type="radio" name="automated_decision" value="no" checked> We do not use personal data for automated decision making</label>
-    <label><input type="radio" name="automated_decision" value="yes"> We do use personal data for automated decision making</label>
+        <h3>3. Automated Decision Making</h3>
+        <label><input type="radio" name="automated_decision" value="no" checked> We do not use personal data for automated decision making</label>
+        <label><input type="radio" name="automated_decision" value="yes"> We do use personal data for automated decision making</label>
 
-    <p>If yes, for the following reasons:</p>
-    <ul>
-      <li>Personalized Marketing and Promotions</li>
-      <li>Research and analytics</li>
-      <li>Customer experience enhancement</li>
-    </ul>
+        <p>If yes, for the following reasons:</p>
+        <ul>
+            <li>Personalized Marketing and Promotions</li>
+            <li>Research and analytics</li>
+            <li>Customer experience enhancement</li>
+        </ul>
 
-    <h3>4. Data Subject Rights</h3>
-    <p>
-      You have the right to withdraw consent at any time.  
-      You have the absolute right to withdraw your consent in case we use your personal data for direct marketing.
-    </p>
+        <h3>4. Data Subject Rights</h3>
+        <p>
+            You have the right to withdraw consent at any time.  
+            You have the absolute right to withdraw your consent in case we use your personal data for direct marketing.
+        </p>
 
-    <h3>5. Data Transfer</h3>
-    <p>
-      If we transfer your personal data outside Kenya, we will inform you of the possible risks of data transfers due to absence of an adequacy decision or what the appropriate safeguards are.
-    </p>
+        <h3>5. Data Transfer</h3>
+        <p>
+            If we transfer your personal data outside Kenya, we will inform you of the possible risks of data transfers due to absence of an adequacy decision or what the appropriate safeguards are.
+        </p>
 
-    <h3>6. Contact Information</h3>
-    <p>
-      For inquiries or requests regarding the processing of personal data captured through filming and photography activities, you can contact Naivas's Data Protection Officer at:
-      <br><br>
-      <strong>Naivas Limited</strong><br>
-      P.O. BOX 61600 – 00200, Nairobi<br>
-      Email: dpo@naivas.co.ke<br>
-      Telephone: +254111184200
-    </p>
+        <h3>6. Contact Information</h3>
+        <p>
+            For inquiries or requests regarding the processing of personal data captured through filming and photography activities, you can contact Naivas's Data Protection Officer at:
+            <br><br>
+            <strong>Naivas Limited</strong><br>
+            P.O. BOX 61600 – 00200, Nairobi<br>
+            Email: dpo@naivas.co.ke<br>
+            Telephone: +254111184200
+        </p>
 
-    <h3>7. Consent</h3>
-    <p>
-      I understand that my photographs or such videos containing my appearance may be thereafter published.  
-      Having read and understood the information contained in this form and in the Privacy Policy, I hereby give consent to take/access/use my:
-    </p>
+        <h3>7. Consent</h3>
+        <p>
+            I understand that my photographs or such videos containing my appearance may be thereafter published.  
+            Having read and understood the information contained in this form and in the Privacy Policy, I hereby give consent to take/access/use my:
+        </p>
 
-    <label><input type="radio" name="consent_publish" value="yes" required> I consent to publishing my photographs, videos and images.</label>
-    <label><input type="radio" name="consent_publish" value="no"> I do not consent to publishing my photographs, videos and images.</label>
+        <label><input type="radio" name="consent_publish" value="yes" required> I consent to publishing my photographs, videos and images.</label>
+        <label><input type="radio" name="consent_publish" value="no"> I do not consent to publishing my photographs, videos and images.</label>
 
-    <label>Name:</label>
-    <input type="text" name="name" required>
+        <label>Name:</label>
+        <input type="text" name="name" required 
+            pattern="[A-Za-z\s.'\-]+" 
+            title="Only letters, spaces, dots, and hyphens are allowed."
+            maxlength="255">
 
-    <label>Date:</label>
-    <input type="date" name="date_submitted" required>
+        <label>Date:</label>
+        <input type="date" name="date_submitted" required>
 
-    <label>Signature:</label>
-    <canvas id="signature" class="signature-pad"></canvas>
-    <button type="button" class="clear-btn" onclick="clearSignature()">Clear Signature</button>
-    <input type="hidden" name="signature" id="signatureData">
+        <label>Signature:</label>
+        <canvas id="signature" class="signature-pad"></canvas>
+        <button type="button" class="clear-btn" onclick="clearSignature()">Clear Signature</button>
+        <input type="hidden" name="signature" id="signatureData">
 
-    <label>Witness Name:</label>
-    <input type="text" name="witness_name">
+        <label>Witness Name:</label>
+        <input type="text" name="witness_name" 
+            pattern="[A-Za-z\s.'\-]*" 
+            title="Only letters, spaces, dots, and hyphens are allowed."
+            maxlength="255">
 
-    <label>Witness Signature:</label>
-    <canvas id="witnessSignature" class="signature-pad"></canvas>
-    <button type="button" class="clear-btn" onclick="clearWitnessSignature()">Clear Witness Signature</button>
-    <input type="hidden" name="witness_signature" id="witnessSignatureData">
+        <label>Witness Signature:</label>
+        <canvas id="witnessSignature" class="signature-pad"></canvas>
+        <button type="button" class="clear-btn" onclick="clearWitnessSignature()">Clear Witness Signature</button>
+        <input type="hidden" name="witness_signature" id="witnessSignatureData">
 
-    <button type="submit">Submit Consent Form</button>
-  </form>
+        <button type="submit">Submit Consent Form</button>
+    </form>
 </div>
 
 <script>
-  const canvas = document.getElementById('signature');
-  const ctx = canvas.getContext('2d');
-  let drawing = false;
-  canvas.addEventListener('mousedown', () => drawing = true);
-  canvas.addEventListener('mouseup', () => drawing = false);
-  canvas.addEventListener('mousemove', draw);
-  function draw(e) { if (!drawing) return; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000'; ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke(); }
-  function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+    // --- Signature Drawing Logic ---
+    const canvas = document.getElementById('signature');
+    const ctx = canvas.getContext('2d');
+    let drawing = false;
+    // Set initial size (needed for proper drawing)
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    
+    canvas.addEventListener('mousedown', (e) => { drawing = true; ctx.beginPath(); ctx.moveTo(e.offsetX, e.offsetY); });
+    canvas.addEventListener('mouseup', () => drawing = false);
+    canvas.addEventListener('mouseout', () => drawing = false);
+    canvas.addEventListener('mousemove', draw);
+    function draw(e) { if (!drawing) return; ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.strokeStyle = '#000'; ctx.lineTo(e.offsetX, e.offsetY); ctx.stroke(); }
+    function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 
-  const witnessCanvas = document.getElementById('witnessSignature');
-  const witnessCtx = witnessCanvas.getContext('2d');
-  let drawingWitness = false;
-  witnessCanvas.addEventListener('mousedown', () => drawingWitness = true);
-  witnessCanvas.addEventListener('mouseup', () => drawingWitness = false);
-  witnessCanvas.addEventListener('mousemove', drawWitness);
-  function drawWitness(e) { if (!drawingWitness) return; witnessCtx.lineWidth = 2; witnessCtx.lineCap = 'round'; witnessCtx.strokeStyle = '#000'; witnessCtx.lineTo(e.offsetX, e.offsetY); witnessCtx.stroke(); }
-  function clearWitnessSignature() { witnessCtx.clearRect(0, 0, witnessCanvas.width, witnessCanvas.height); }
+    const witnessCanvas = document.getElementById('witnessSignature');
+    const witnessCtx = witnessCanvas.getContext('2d');
+    let drawingWitness = false;
+    witnessCanvas.width = witnessCanvas.offsetWidth;
+    witnessCanvas.height = witnessCanvas.offsetHeight;
 
-  document.getElementById('consentForm').addEventListener('submit', function() {
-    document.getElementById('signatureData').value = canvas.toDataURL('image/png');
-    document.getElementById('witnessSignatureData').value = witnessCanvas.toDataURL('image/png');
-  });
+    witnessCanvas.addEventListener('mousedown', (e) => { drawingWitness = true; witnessCtx.beginPath(); witnessCtx.moveTo(e.offsetX, e.offsetY); });
+    witnessCanvas.addEventListener('mouseup', () => drawingWitness = false);
+    witnessCanvas.addEventListener('mouseout', () => drawingWitness = false);
+    witnessCanvas.addEventListener('mousemove', drawWitness);
+    function drawWitness(e) { if (!drawingWitness) return; witnessCtx.lineWidth = 2; witnessCtx.lineCap = 'round'; witnessCtx.strokeStyle = '#000'; witnessCtx.lineTo(e.offsetX, e.offsetY); witnessCtx.stroke(); }
+    function clearWitnessSignature() { witnessCtx.clearRect(0, 0, witnessCanvas.width, witnessCanvas.height); }
+    // --- End Signature Drawing Logic ---
+
+
+    // --- SECURITY MEASURE: Client-side validation on submission ---
+    document.getElementById('consentForm').addEventListener('submit', function(event) {
+        
+        const signatureData = canvas.toDataURL('image/png');
+        const witnessSignatureData = witnessCanvas.toDataURL('image/png');
+
+        // Check if the primary signature is just the empty canvas data URI
+        // An empty canvas still generates a long Base64 string, but it's small (e.g., around 100 bytes).
+        const EMPTY_CANVAS_BASE64_LENGTH = 100; 
+        if (signatureData.length < EMPTY_CANVAS_BASE64_LENGTH + 500) { // Add a buffer for safety
+            alert("Please provide a signature before submitting.");
+            event.preventDefault(); 
+            return;
+        }
+        
+        // Size limit check to mitigate DoS/DB bloat before the server sees the data
+        const MAX_BASE64_LENGTH = 3 * 1024 * 1024; // 3 MB Base64 string limit
+        if (signatureData.length > MAX_BASE64_LENGTH || witnessSignatureData.length > MAX_BASE64_LENGTH) {
+            alert("Error: Signature data is too large. Please keep the signature brief.");
+            event.preventDefault(); 
+            return;
+        }
+
+        // Finalize hidden fields for submission
+        document.getElementById('signatureData').value = signatureData;
+        document.getElementById('witnessSignatureData').value = witnessSignatureData;
+
+        // Note: The server-side script (save_consent.php) must repeat all validation and size checks.
+    });
 </script>
 
 </body>
